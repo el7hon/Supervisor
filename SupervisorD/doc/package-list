@@ -1,0 +1,10 @@
+br.edu.ufcg.supervisor.desktop.ufcg.supervisor.base.model
+br.edu.ufcg.supervisor.desktop.teste
+br.edu.ufcg.supervisor.desktop.ufcg.supervisor.base.util
+br.edu.ufcg.supervisor.desktop.view
+com.google.gson
+com.google.gson.annotations
+com.google.gson.internal
+com.google.gson.internal.bind
+com.google.gson.reflect
+com.google.gson.stream
