@@ -19,7 +19,7 @@
 
  import br.edu.ufcg.supervisor.desktop.windows.WindowsManager;
 /**
- * Classe responsável por inicializar a aplicação com as telas menos elaboradas, quadradas, rudimentares. 
+ * Class responsible for starting application. 
  * @author Marcos José, Elthon Oliveira
  *
  */
