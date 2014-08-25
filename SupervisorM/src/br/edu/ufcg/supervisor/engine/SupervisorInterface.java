@@ -1,21 +1,22 @@
-/*
-       Licensed to the Apache Software Foundation (ASF) under one
-       or more contributor license agreements.  See the NOTICE file
-       distributed with this work for additional information
-       regarding copyright ownership.  The ASF licenses this file
-       to you under the Apache License, Version 2.0 (the
-       "License"); you may not use this file except in compliance
-       with the License.  You may obtain a copy of the License at
+/**
+ * Copyright 2013-2014 Elthon Oliveira and Marcos Ferreira
+ * 
+ * This file is part of Supervisor for Healthcare Professional software.
+ * 
+ *  Supervisor for Healthcare Professional is free software: you can 
+ *  redistribute it and/or modify it under the terms of the GNU General 
+ *  Public License as published by the Free Software Foundation, either 
+ *  version 3 of the License, or (at your option) any later version.
+ *  
+ *  Supervisor for Healthcare Professional is distributed in the hope that
+ *  it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+ *  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See 
+ *  the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License
+ *  along with Supervisor for Healthcare Professional. 
+ *  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-         http://www.apache.org/licenses/LICENSE-2.0
-
-       Unless required by applicable law or agreed to in writing,
-       software distributed under the License is distributed on an
-       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-       KIND, either express or implied.  See the License for the
-       specific language governing permissions and limitations
-       under the License.
-*/
 package br.edu.ufcg.supervisor.engine;
 
 import java.util.TimeZone;
@@ -30,18 +31,7 @@ import org.json.JSONObject;
 import android.provider.Settings;
 
 public class SupervisorInterface extends org.apache.cordova.api.CordovaPlugin {
-    public static final String TAG = "SupervisorInterface";
-
-    public static String platform;                            // SupervisorInterface OS
-    public static String uuid;                                // SupervisorInterface UUID
-
-    private static final String ANDROID_PLATFORM = "Android";
-    private static final String AMAZON_PLATFORM = "amazon-fireos";
-    private static final String AMAZON_DEVICE = "Amazon";
-
-    /**
-     * Constructor.
-     */
+    //public static final String TAG = "SupervisorInterface";
     public SupervisorInterface() {    }
 
     /**
@@ -51,10 +41,7 @@ public class SupervisorInterface extends org.apache.cordova.api.CordovaPlugin {
      * @param cordova The context of the main Activity.
      * @param webView The CordovaWebView Cordova is running in.
      */
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-        super.initialize(cordova, webView);
-        SupervisorInterface.uuid = getUuid();
-    }
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) { super.initialize(cordova, webView); }
 
     /**
      * Executes the request and returns PluginResult.
@@ -67,17 +54,15 @@ public class SupervisorInterface extends org.apache.cordova.api.CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("getDeviceInfo")) {
             JSONObject r = new JSONObject();
-            r.put("uuid", SupervisorInterface.uuid);
-            r.put("versio", this.getOSVersion());
-            //r.put("platform", this.getPlatform());
-            Classe c = new Classe(5);
-            r.put("platform", c.getJ());
+            r.put("uuid", "uuid.elthon");
+            r.put("version", "version.elthon");
+            r.put("platform", "platform.elthon");
             r.put("model", this.getModel());
             callbackContext.success(r);
         } else if (action.equals("getFilePath")) {
         	String str = args.get(0).toString();
         	JSONObject r = new JSONObject();
-            r.put("uuid", TrainingLoader.getFilePath(str));
+            r.put("caminho", TrainingLoader.getFilePath(str));
             callbackContext.success(r);
         } else { return false; }
         return true;
@@ -86,21 +71,6 @@ public class SupervisorInterface extends org.apache.cordova.api.CordovaPlugin {
     //--------------------------------------------------------------------------
     // LOCAL METHODS
     //--------------------------------------------------------------------------
-
-    /**
-     * Get the OS name.
-     * 
-     * @return
-     */
-    public String getPlatform() {
-        String platform;
-        if (isAmazonDevice()) {
-            platform = AMAZON_PLATFORM;
-        } else {
-            platform = ANDROID_PLATFORM;
-        }
-        return platform;
-    }
 
     /**
      * Get the device's Universally Unique Identifier (UUID).
@@ -142,17 +112,4 @@ public class SupervisorInterface extends org.apache.cordova.api.CordovaPlugin {
         TimeZone tz = TimeZone.getDefault();
         return (tz.getID());
     }
-
-    /**
-     * Function to check if the device is manufactured by Amazon
-     * 
-     * @return
-     */
-    public boolean isAmazonDevice() {
-        if (android.os.Build.MANUFACTURER.equals(AMAZON_DEVICE)) {
-            return true;
-        }
-        return false;
-    }
-
 }

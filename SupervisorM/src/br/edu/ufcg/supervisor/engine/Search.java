@@ -1,5 +1,5 @@
 /**
- * Copyright 2013-2014 Marcos Ferreira and Elthon Oliveira
+ * Copyright 2013-2014 Elthon Oliveira and Marcos Ferreira
  * 
  * This file is part of Supervisor for Healthcare Professional software.
  * 

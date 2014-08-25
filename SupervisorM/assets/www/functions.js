@@ -21,7 +21,7 @@ function callPlugin() { cordova.exec(
 
 function getDeviceInfo() { cordova.exec(
 	function(parametro){
-		alert("- " + parametro.uuid + " " + parametro.versio + " " + parametro.platform + " " + parametro.model);
+		alert("- " + parametro.uuid + " " + parametro.version + " " + parametro.platform + " " + parametro.model);
 	},
 	function(parametro){ alert("deu errado - device info"); },
 	"SupervisorInterface","getDeviceInfo",[]);
@@ -29,8 +29,8 @@ function getDeviceInfo() { cordova.exec(
 
 function getFilePath() { cordova.exec(
 	function(parametro){
-		alert("- " + parametro.uuid + " " + parametro.versio + " " + parametro.platform + " " + parametro.model);
+		alert("- " + parametro.caminho);
 	},
 	function(parametro){ alert("deu errado - file path"); },
-	"SupervisorInterface","getFilePath",["testandooooooo"]);
+	"SupervisorInterface","getFilePath",["modelo.sup"]);
 }
