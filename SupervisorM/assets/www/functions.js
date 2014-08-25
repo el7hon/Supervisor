@@ -19,10 +19,18 @@ function callPlugin() { cordova.exec(
 	"Servico1","teste",["elthon","allex",31]);
 }
 
-function getI() { cordova.exec(
+function getDeviceInfo() { cordova.exec(
 	function(parametro){
-		alert("- " + parametro.uuid + " " + parametro.versio + " " + parametro.platfotm + " " + parametro.model);
+		alert("- " + parametro.uuid + " " + parametro.versio + " " + parametro.platform + " " + parametro.model);
 	},
-	function(parametro){ alert("deu errado"); },
-	"Device","getDeviceInfo",[]);
+	function(parametro){ alert("deu errado - device info"); },
+	"SupervisorInterface","getDeviceInfo",[]);
+}
+
+function getFilePath() { cordova.exec(
+	function(parametro){
+		alert("- " + parametro.uuid + " " + parametro.versio + " " + parametro.platform + " " + parametro.model);
+	},
+	function(parametro){ alert("deu errado - file path"); },
+	"SupervisorInterface","getFilePath",["testandooooooo"]);
 }

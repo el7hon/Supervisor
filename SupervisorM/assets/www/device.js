@@ -1,12 +1,13 @@
-cordova.define("org.apache.cordova.device.device", function(require, exports, module) { var argscheck = require('cordova/argscheck'),
+cordova.define("org.apache.cordova.device.device", function(require, exports, module) {
+	var argscheck = require('cordova/argscheck'),
     channel = require('cordova/channel'),
     utils = require('cordova/utils'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
-channel.createSticky('onCordovaInfoReady');
+//channel.createSticky('onCordovaInfoReady');
 // Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
+//channel.waitForInitialization('onCordovaInfoReady');
 
 /**
  * This represents the mobile device, and provides properties for inspecting the model, version, UUID of the
@@ -14,6 +15,7 @@ channel.waitForInitialization('onCordovaInfoReady');
  * @constructor
  */
 function Device() {
+/*
     this.available = false;
     this.platform = null;
     this.version = null;
@@ -34,12 +36,13 @@ function Device() {
             me.uuid = info.uuid;
             me.cordova = buildLabel;
             me.model = info.model;
-            channel.onCordovaInfoReady.fire();
+            //channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
-            utils.alert("[ERROR] Error initializing Cordova: " + e);
+            utils.alert("[elthon] Error initializing Cordova: " + e);
         });
     });
+*/
 }
 
 /**

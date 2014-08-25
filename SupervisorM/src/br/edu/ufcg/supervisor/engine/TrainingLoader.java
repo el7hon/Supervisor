@@ -43,7 +43,7 @@ public class TrainingLoader {
 	public static String getFilePath(String arquivo){
 		File directory = Environment.getExternalStorageDirectory();
 		File file = new File(directory + "/Download/"+arquivo);// /Teste.txt
-		if (!file.exists()) return "File not found";
+		if (!file.exists()) return "File not found,mther fcker!!";
 		return directory + "/Download/"+arquivo;
 	}
 	
